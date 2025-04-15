@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 2e0eb542be7ce1f47920cd2155fc966d
+guid: 2200994f5b47abf43a54c7ffe5d175cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1396483287286313306
-    second: Roads_0
+      213: -8295216305408270328
+    second: Roads (1)_0
   - first:
-      213: -2656324371522367893
-    second: Roads_1
+      213: 4419741779506517191
+    second: Roads (1)_1
   - first:
-      213: 4369560171034777531
-    second: Roads_2
+      213: 7333534306812458011
+    second: Roads (1)_2
   - first:
-      213: 1783640835874756645
-    second: Roads_3
+      213: 3565437113033558215
+    second: Roads (1)_3
   - first:
-      213: 7562056680135774178
-    second: Roads_4
+      213: -4551581621905873631
+    second: Roads (1)_4
   - first:
-      213: -2056183421091898765
-    second: Roads_5
+      213: 734205461342993476
+    second: Roads (1)_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Roads_0
+      name: road_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 450103e48a5eb7749b7ae3ef312fca4b
-      internalID: 1733757970
+      spriteID: 00cda94ebe58e334ba6b31c4ae9dc2ea
+      internalID: 1040556830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roads_1
+      name: road_1
       rect:
         serializedVersion: 2
         x: 128
@@ -165,14 +165,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2668a283eb0fb66488b4cb144bc570db
-      internalID: 1654316920
+      spriteID: 1e9c81a3365615e4397266ea08c8fb7d
+      internalID: -1555122591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roads_2
+      name: road_2
       rect:
         serializedVersion: 2
         x: 0
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c47b44b6428445428b16bd422246616
-      internalID: -1587051199
+      spriteID: 41340a4df3c44e8479079bc6d10635ca
+      internalID: -312799019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roads_3
+      name: road_3
       rect:
         serializedVersion: 2
         x: 128
@@ -209,14 +209,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6ce07c6d3799d84cac4cd22f8c3e854
-      internalID: -744902232
+      spriteID: 09e5a9292f735de499c8521201b7cc30
+      internalID: -56153385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roads_4
+      name: road_4
       rect:
         serializedVersion: 2
         x: 0
@@ -231,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60d50b212f8441548826cdc6a90ffc4e
-      internalID: 1326666158
+      spriteID: 84a2ecdde1715ba43bafee3a6a430f67
+      internalID: -1432293361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roads_5
+      name: road_5
       rect:
         serializedVersion: 2
         x: 128
@@ -253,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b5033b446607d64588c65f2f7394efb
-      internalID: -7689004
+      spriteID: f8b6e66f94eedd142bf9d9bbbb3f0e1e
+      internalID: 1336647755
       vertices: []
       indices: 
       edges: []
@@ -263,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0a7f68be8bfa5cc40b1749dfabb1cd68
+    spriteID: a40b6e1f1be9b034594b9c879a2b9752
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Roads_0: 1733757970
-      Roads_1: 1654316920
-      Roads_2: -1587051199
-      Roads_3: -744902232
-      Roads_4: 1326666158
-      Roads_5: -7689004
+      road_0: 1040556830
+      road_1: -1555122591
+      road_2: -312799019
+      road_3: -56153385
+      road_4: -1432293361
+      road_5: 1336647755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
