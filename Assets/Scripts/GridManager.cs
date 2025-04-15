@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,14 +8,36 @@ public class GridManager : MonoBehaviour
     [SerializeField] int width, height;
     [SerializeField] GridTile gridTile;
 
-    [SerializeField] Tilemap cellTilemap;
-    [SerializeField] Tile cellTile;
+    [SerializeField] Transform gridTileContainer;
+    [SerializeField] Transform upcomingPieceContainer;
 
     Dictionary<Vector2Int, GridTile> tiles;
+    GridTile[] upcomingPiecesTiles = new GridTile[5];
+
+    int upcomingPiecesLength = 5;
+    int upcomingPiecesX = -2;
 
     void Start()
     {
+        GenerateUpcomingPiecesGrid();
         GenerateGrid();
+    }
+
+    void GenerateUpcomingPiecesGrid()
+    {
+        for (int y = 0; y < upcomingPiecesLength; y++)
+        {
+            GridTile spawnedTile = Instantiate(
+                gridTile,
+                new Vector3Int(upcomingPiecesX, y + 1, 0),
+                Quaternion.identity,
+                upcomingPieceContainer);
+            spawnedTile.canHighlight = false;
+            spawnedTile.SetHighlight(y != 0);
+            upcomingPiecesTiles[y] = spawnedTile;
+        }
+
+        RoadSpawner.Instance.Init(upcomingPiecesTiles);
     }
 
     void GenerateGrid()
@@ -24,8 +47,11 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                //cellTilemap.SetTile(new Vector3Int(x, y, 0), cellTile);
-                GridTile spawnedTile = Instantiate(gridTile, new Vector3Int(x, y, 0), Quaternion.identity);
+                GridTile spawnedTile = Instantiate(
+                    gridTile,
+                    new Vector3Int(x, y, 0),
+                    Quaternion.identity,
+                    gridTileContainer);
                 tiles[new Vector2Int(x, y)] = spawnedTile;
             }
         }
