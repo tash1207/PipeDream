@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 4757522580336186132, guid: 439c1dc2c25f3454dba605964de9dd21, type: 3}
   - {fileID: 7403645542928437989, guid: 964186d91058b7048b39f66dabe2e24a, type: 3}
   iceCreamTruckPrefab: {fileID: 2548074437326771978, guid: 5c6f1190a8de32f49ab859588339c84c, type: 3}
+  canPlaceRoad: 1
 --- !u!4 &86460199
 Transform:
   m_ObjectHideFlags: 0

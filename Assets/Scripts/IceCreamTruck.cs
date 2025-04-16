@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class IceCreamTruck : MonoBehaviour
 {
+    [SerializeField] GameObject iceCreamCone;
     public float MoveSpeed = 0.1f;
 
     bool isMoving;
@@ -60,9 +61,9 @@ public class IceCreamTruck : MonoBehaviour
 
                 if (nextTile != null)
                 {
+                    Instantiate(iceCreamCone, transform.position, iceCreamCone.transform.rotation);
                     MoveFrom(nextTile.RoadPiece);
                 }
-                
             }
         }
     }
@@ -81,6 +82,7 @@ public class IceCreamTruck : MonoBehaviour
                 if (currentTile.RoadPiece.isEnd)
                 {
                     Debug.Log("You win!");
+                    nextTile = null;
                     GridManager.Instance.canPlaceRoad = false;
                 }
                 else

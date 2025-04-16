@@ -72,7 +72,7 @@ public class GridTile : MonoBehaviour
         canPlaceRoad = false;
         ParticleSystem boomEffect =
             Instantiate(boomEffectPrefab, transform.position, Quaternion.identity);
-        Destroy(boomEffect, boomEffect.main.duration);
+        Destroy(boomEffect.gameObject, boomEffect.main.duration);
 
         yield return new WaitForSecondsRealtime(0.5f);
         RoadPiece.gameObject.SetActive(false);
