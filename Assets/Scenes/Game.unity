@@ -153,6 +153,11 @@ MonoBehaviour:
   gridTile: {fileID: 8261627171783928202, guid: d728a44e7f3fc5540a54c5a4f1f5ee72, type: 3}
   gridTileContainer: {fileID: 486382893}
   upcomingPieceContainer: {fileID: 1930164008}
+  possibleHubPieces:
+  - {fileID: 6142008214217129502, guid: a83fc73e9923aa54eb28fa87dbcbd077, type: 3}
+  - {fileID: 4121658276031914278, guid: 44158b0b427e4e14faa7fb99a0321d8f, type: 3}
+  - {fileID: 4757522580336186132, guid: 439c1dc2c25f3454dba605964de9dd21, type: 3}
+  - {fileID: 7403645542928437989, guid: 964186d91058b7048b39f66dabe2e24a, type: 3}
 --- !u!4 &86460199
 Transform:
   m_ObjectHideFlags: 0

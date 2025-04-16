@@ -21,25 +21,20 @@ public class RoadSpawner : MonoBehaviour
         SpawnUpcomingPieces();
     }
 
-    void SpawnUpcomingPieces()
-    {
-        for (int i = 0; i < upcomingPieces.Length; i++)
-        {
-            RoadPiece roadPiece = Instantiate( 
-                possibleRoadPieces[Random.Range(0, possibleRoadPieces.Length)],
-                upcomingPiecesTiles[i].transform.position,
-                Quaternion.identity,
-                upcomingPiecesTiles[i].gameObject.transform);
-            upcomingPieces[i] = roadPiece;
-        }
-    }
-
     public RoadPiece PlaceCurrentPiece()
     {
         RoadPiece currentRoadPiece = upcomingPieces[0];
         ShiftAllUpcomingPieces();
 
         return currentRoadPiece;
+    }
+
+    void SpawnUpcomingPieces()
+    {
+        for (int i = 0; i < upcomingPieces.Length; i++)
+        {
+            SpawnPieceAtIndex(i);
+        }
     }
 
     void ShiftAllUpcomingPieces()
@@ -54,12 +49,16 @@ public class RoadSpawner : MonoBehaviour
             upcomingPieces[i-1] = upcomingPieces[i];
         }
 
-        int lastIndex = upcomingPieces.Length - 1;
+        SpawnPieceAtIndex(upcomingPieces.Length - 1);
+    }
+
+    void SpawnPieceAtIndex(int index)
+    {
         RoadPiece roadPiece = Instantiate(
                 possibleRoadPieces[Random.Range(0, possibleRoadPieces.Length)],
-                upcomingPiecesTiles[lastIndex].transform.position,
+                upcomingPiecesTiles[index].transform.position,
                 Quaternion.identity,
-                upcomingPiecesTiles[lastIndex].gameObject.transform);
-        upcomingPieces[lastIndex] = roadPiece;
+                upcomingPiecesTiles[index].gameObject.transform);
+        upcomingPieces[index] = roadPiece;
     }
 }

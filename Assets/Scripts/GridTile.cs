@@ -6,7 +6,7 @@ public class GridTile : MonoBehaviour
     [SerializeField] GameObject[] roadPieces;
 
     public bool canHighlight = true;
-    bool hasRoad;
+    public bool hasRoad;
 
     public void SetHighlight(bool enabled)
     {

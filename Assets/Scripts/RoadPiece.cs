@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class RoadPiece : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public bool isStart;
+    public bool isEnd;
 
-    // Update is called once per frame
     void Update()
     {
         
