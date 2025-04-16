@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
@@ -23,6 +21,7 @@ public class GridManager : MonoBehaviour
     int upcomingPiecesX = -2;
 
     float iceCreamTruckMoveDelay = 5f;
+    public bool canPlaceRoad = true;
 
     RoadPiece startPiece;
     RoadPiece endPiece;
@@ -76,8 +75,9 @@ public class GridManager : MonoBehaviour
 
     void GenerateStartAndEnd()
     {
-        int randomStartX = Random.Range(1, 3);
-        int randomStartY = Random.Range(1, 3);
+        // Spawn at 2, 2 for easiest level.
+        int randomStartX = Random.Range(2, 3);
+        int randomStartY = Random.Range(2, 3);
         Vector2Int startPos = new Vector2Int(randomStartX, randomStartY);
 
         int randomEndX = Random.Range(width - 3, width - 1);
@@ -92,6 +92,7 @@ public class GridManager : MonoBehaviour
             startTile.transform);
         startPiece.isStart = true;
         startTile.SetRoadPiece(startPiece);
+        startTile.canPlaceRoad = false;
 
         iceCreamTruck = Instantiate(
             iceCreamTruckPrefab,
@@ -107,6 +108,7 @@ public class GridManager : MonoBehaviour
             endTile.transform);
         endPiece.isEnd = true;
         endTile.SetRoadPiece(endPiece);
+        endTile.canPlaceRoad = false;
     }
 
     IEnumerator MoveIceCreamTruck()

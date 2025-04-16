@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 963094780669532289}
+  boomEffectPrefab: {fileID: 6184397786519648588, guid: 3c4b1014931afff48b4ccac2e8968c43, type: 3}
   roadPieces:
   - {fileID: 1690120419779206322, guid: f5e7e144af0be524a8915ac2bc0d4943, type: 3}
   - {fileID: 3871650617461460931, guid: 81025beaf21ff53458dbb1131bc0797c, type: 3}
@@ -198,6 +199,7 @@ MonoBehaviour:
   - {fileID: 1430772499077139214, guid: 828a5c57138760846adeb11f5301ede2, type: 3}
   - {fileID: 3335369966675266202, guid: 5d5a6a7df536c7d43a3a74b58ae2a2c3, type: 3}
   canHighlight: 1
+  canPlaceRoad: 1
 --- !u!61 &8488877792281277819
 BoxCollider2D:
   m_ObjectHideFlags: 0

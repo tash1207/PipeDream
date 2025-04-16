@@ -69,13 +69,19 @@ public class IceCreamTruck : MonoBehaviour
 
     public void OnEnteredNewTile(GridTile currentTile)
     {
+        currentTile.canPlaceRoad = false;
         if (currentTile.HasRoad())
         {
-            if (currentTile.RoadPiece.EnterRoad(enteringDirection))
+            if (currentTile.RoadPiece.isStart)
+            {
+                nextTile = currentTile;
+            }
+            else if (currentTile.RoadPiece.EnterRoad(enteringDirection))
             {
                 if (currentTile.RoadPiece.isEnd)
                 {
                     Debug.Log("You win!");
+                    GridManager.Instance.canPlaceRoad = false;
                 }
                 else
                 {
