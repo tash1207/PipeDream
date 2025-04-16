@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1841017069051782089}
   - component: {fileID: 8261627171783928202}
   - component: {fileID: 8488877792281277819}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GridTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +197,7 @@ MonoBehaviour:
   - {fileID: 2946840746676579096, guid: dfd3e97c437956a44afc6d12ec8da0a6, type: 3}
   - {fileID: 1430772499077139214, guid: 828a5c57138760846adeb11f5301ede2, type: 3}
   - {fileID: 3335369966675266202, guid: 5d5a6a7df536c7d43a3a74b58ae2a2c3, type: 3}
+  canHighlight: 1
 --- !u!61 &8488877792281277819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

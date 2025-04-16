@@ -22,7 +22,16 @@ public class GridTile : MonoBehaviour
     {
         RoadPiece = rp;
     }
-    
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Ice cream truck has entered new tile");
+        if (collision.gameObject.TryGetComponent<IceCreamTruck>(out IceCreamTruck truck))
+        {
+            truck.OnEnteredNewTile(this);
+        }
+    }
+
     void OnMouseEnter()
     {
         if (canHighlight && !HasRoad())

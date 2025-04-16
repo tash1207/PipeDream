@@ -8,16 +8,11 @@ public class IceCreamTruck : MonoBehaviour
     Vector3 moveTarget;
 
     RoadPiece.Node enteringDirection;
+    GridTile nextTile;
 
     public void SpeedUp()
     {
         MoveSpeed = 2f;
-    }
-    
-    public void MoveTo(Vector2Int cell)
-    {
-        isMoving = true;
-        moveTarget = new Vector3(cell.x, cell.y, 0);
     }
 
     public void MoveFrom(RoadPiece roadPiece)
@@ -63,37 +58,40 @@ public class IceCreamTruck : MonoBehaviour
             {
                 isMoving = false;
 
-                // Probably want to do this check earlier instead of when we're in the
-                // center of the tile that might not have a road on it.
-                GridTile currentTile = GridManager.Instance.GetTileAtPosition(
-                    new Vector2Int(Mathf.RoundToInt(transform.position.x),
-                        Mathf.RoundToInt(transform.position.y)));
-                
-                if (currentTile != null && currentTile.HasRoad())
+                if (nextTile != null)
                 {
-                    Debug.Log("Current tile has road");
-                    if (currentTile.RoadPiece.EnterRoad(enteringDirection))
-                    {
-                        Debug.Log("Current tile can be entered");
-                        if (currentTile.RoadPiece.isEnd)
-                        {
-                            Debug.Log("You win!");
-                        }
-                        else
-                        {
-                            MoveFrom(currentTile.RoadPiece);
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("Current tile cannot be entered");
-                    }
+                    MoveFrom(nextTile.RoadPiece);
+                }
+                
+            }
+        }
+    }
+
+    public void OnEnteredNewTile(GridTile currentTile)
+    {
+        if (currentTile.HasRoad())
+        {
+            if (currentTile.RoadPiece.EnterRoad(enteringDirection))
+            {
+                if (currentTile.RoadPiece.isEnd)
+                {
+                    Debug.Log("You win!");
                 }
                 else
                 {
-                    Debug.Log("Current tile not found or has no road");
+                    nextTile = currentTile;
                 }
             }
+            else
+            {
+                Debug.Log("Current tile cannot be entered");
+                isMoving = false;
+            }
+        }
+        else
+        {
+            Debug.Log("Current tile has no road");
+            isMoving = false;
         }
     }
 }
