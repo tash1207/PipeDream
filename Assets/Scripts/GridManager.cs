@@ -13,6 +13,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] Transform upcomingPieceContainer;
     [SerializeField] RoadPiece[] possibleHubPieces;
     [SerializeField] IceCreamTruck iceCreamTruckPrefab;
+    [SerializeField] AudioSource backgroundMusic;
 
     Dictionary<Vector2Int, GridTile> tiles;
     GridTile[] upcomingPiecesTiles = new GridTile[5];
@@ -120,6 +121,7 @@ public class GridManager : MonoBehaviour
     public void SpeedUp()
     {
         iceCreamTruck.SpeedUp();
+        backgroundMusic.pitch = 1.07f;
     }
 
     public GridTile GetTileAtPosition(Vector2Int pos)
