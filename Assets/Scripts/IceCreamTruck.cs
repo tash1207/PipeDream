@@ -3,17 +3,22 @@ using UnityEngine;
 public class IceCreamTruck : MonoBehaviour
 {
     [SerializeField] GameObject iceCreamCone;
-    public float MoveSpeed = 0.1f;
-
+    
+    float moveSpeed = 0.1f;
     bool isMoving;
     Vector3 moveTarget;
 
     RoadPiece.Node enteringDirection;
     GridTile nextTile;
 
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
+
     public void SpeedUp()
     {
-        MoveSpeed = 2f;
+        moveSpeed = 2.2f;
     }
 
     public void MoveFrom(RoadPiece roadPiece)
@@ -53,7 +58,7 @@ public class IceCreamTruck : MonoBehaviour
         if (isMoving)
         {
             transform.position =
-                Vector3.MoveTowards(transform.position, moveTarget, MoveSpeed * Time.deltaTime);
+                Vector3.MoveTowards(transform.position, moveTarget, moveSpeed * Time.deltaTime);
         
             if (transform.position == moveTarget)
             {

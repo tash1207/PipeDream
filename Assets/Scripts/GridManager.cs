@@ -6,8 +6,12 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance { get; private set; }
 
+    [Header("Settings")]
     [SerializeField] int width, height;
+    [SerializeField] float iceCreamTruckMoveDelay = 5f;
+    [SerializeField] float iceCreamTruckMoveSpeed = 0.1f;
     
+    [Header("References")]
     [SerializeField] GridTile gridTile;
     [SerializeField] Transform gridTileContainer;
     [SerializeField] Transform upcomingPieceContainer;
@@ -21,7 +25,6 @@ public class GridManager : MonoBehaviour
     int upcomingPiecesLength = 5;
     int upcomingPiecesX = -2;
 
-    float iceCreamTruckMoveDelay = 5f;
     public bool canPlaceRoad = true;
 
     RoadPiece startPiece;
@@ -99,6 +102,7 @@ public class GridManager : MonoBehaviour
             iceCreamTruckPrefab,
             new Vector3(startPos.x, startPos.y, 0),
             Quaternion.identity);
+        iceCreamTruck.SetSpeed(iceCreamTruckMoveSpeed);
         StartCoroutine(MoveIceCreamTruck());
 
         GridTile endTile = GetTileAtPosition(endPos);
