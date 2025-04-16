@@ -18,6 +18,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] RoadPiece[] possibleHubPieces;
     [SerializeField] IceCreamTruck iceCreamTruckPrefab;
     [SerializeField] AudioSource backgroundMusic;
+    [SerializeField] GameObject gameOverCanvas;
+    [SerializeField] GameObject youWinCanvas;
 
     Dictionary<Vector2Int, GridTile> tiles;
     GridTile[] upcomingPiecesTiles = new GridTile[5];
@@ -126,6 +128,16 @@ public class GridManager : MonoBehaviour
     {
         iceCreamTruck.SpeedUp();
         backgroundMusic.pitch = 1.07f;
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverCanvas.SetActive(true);
+    }
+
+    public void ShowWinScreen()
+    {
+        youWinCanvas.SetActive(true);
     }
 
     public GridTile GetTileAtPosition(Vector2Int pos)

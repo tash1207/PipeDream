@@ -11,6 +11,8 @@ public class IceCreamTruck : MonoBehaviour
     RoadPiece.Node enteringDirection;
     GridTile nextTile;
 
+    bool showWinScreen;
+
     public void SetSpeed(float speed)
     {
         moveSpeed = speed;
@@ -64,6 +66,11 @@ public class IceCreamTruck : MonoBehaviour
             {
                 isMoving = false;
 
+                if (showWinScreen)
+                {
+                    GridManager.Instance.ShowWinScreen();
+                }
+
                 if (nextTile != null)
                 {
                     Instantiate(iceCreamCone, transform.position, iceCreamCone.transform.rotation);
@@ -89,6 +96,7 @@ public class IceCreamTruck : MonoBehaviour
                     Debug.Log("You win!");
                     nextTile = null;
                     GridManager.Instance.canPlaceRoad = false;
+                    showWinScreen = true;
                 }
                 else
                 {
@@ -99,12 +107,14 @@ public class IceCreamTruck : MonoBehaviour
             {
                 Debug.Log("Current tile cannot be entered");
                 isMoving = false;
+                GridManager.Instance.ShowGameOver();
             }
         }
         else
         {
             Debug.Log("Current tile has no road");
             isMoving = false;
+            GridManager.Instance.ShowGameOver();
         }
     }
 }
