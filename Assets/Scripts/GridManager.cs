@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] Transform gridTileContainer;
     [SerializeField] Transform upcomingPieceContainer;
     [SerializeField] RoadPiece[] possibleHubPieces;
+    [SerializeField] IceCreamTruck iceCreamTruckPrefab;
 
     Dictionary<Vector2Int, GridTile> tiles;
     GridTile[] upcomingPiecesTiles = new GridTile[5];
@@ -20,8 +22,11 @@ public class GridManager : MonoBehaviour
     int upcomingPiecesLength = 5;
     int upcomingPiecesX = -2;
 
+    float iceCreamTruckMoveDelay = 5f;
+
     RoadPiece startPiece;
     RoadPiece endPiece;
+    IceCreamTruck iceCreamTruck;
 
     void Awake()
     {
@@ -88,6 +93,12 @@ public class GridManager : MonoBehaviour
         startPiece.isStart = true;
         startTile.hasRoad = true;
 
+        iceCreamTruck = Instantiate(
+            iceCreamTruckPrefab,
+            new Vector3(startPos.x, startPos.y, 0),
+            Quaternion.identity);
+        StartCoroutine(MoveIceCreamTruck());
+
         GridTile endTile = GetTileAtPosition(endPos);
         endPiece = Instantiate(
             possibleHubPieces[Random.Range(0, possibleHubPieces.Length)],
@@ -96,6 +107,12 @@ public class GridManager : MonoBehaviour
             endTile.transform);
         endPiece.isEnd = true;
         endTile.hasRoad = true;
+    }
+
+    IEnumerator MoveIceCreamTruck()
+    {
+        yield return new WaitForSecondsRealtime(iceCreamTruckMoveDelay);
+        iceCreamTruck.MoveFrom(startPiece);
     }
 
     public GridTile GetTileAtPosition(Vector2Int pos)
