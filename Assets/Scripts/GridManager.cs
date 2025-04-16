@@ -91,7 +91,7 @@ public class GridManager : MonoBehaviour
             Quaternion.identity,
             startTile.transform);
         startPiece.isStart = true;
-        startTile.hasRoad = true;
+        startTile.SetRoadPiece(startPiece);
 
         iceCreamTruck = Instantiate(
             iceCreamTruckPrefab,
@@ -106,13 +106,18 @@ public class GridManager : MonoBehaviour
             Quaternion.identity,
             endTile.transform);
         endPiece.isEnd = true;
-        endTile.hasRoad = true;
+        endTile.SetRoadPiece(endPiece);
     }
 
     IEnumerator MoveIceCreamTruck()
     {
         yield return new WaitForSecondsRealtime(iceCreamTruckMoveDelay);
         iceCreamTruck.MoveFrom(startPiece);
+    }
+
+    public void SpeedUp()
+    {
+        iceCreamTruck.SpeedUp();
     }
 
     public GridTile GetTileAtPosition(Vector2Int pos)

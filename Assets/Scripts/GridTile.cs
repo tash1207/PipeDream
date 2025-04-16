@@ -6,16 +6,26 @@ public class GridTile : MonoBehaviour
     [SerializeField] GameObject[] roadPieces;
 
     public bool canHighlight = true;
-    public bool hasRoad;
+    public RoadPiece RoadPiece { get; private set; }
 
     public void SetHighlight(bool enabled)
     {
         highlight.SetActive(enabled);
     }
+
+    public bool HasRoad()
+    {
+        return RoadPiece != null;
+    }
+
+    public void SetRoadPiece(RoadPiece rp)
+    {
+        RoadPiece = rp;
+    }
     
     void OnMouseEnter()
     {
-        if (canHighlight && !hasRoad)
+        if (canHighlight && !HasRoad())
         {
             highlight.SetActive(true);
         }
@@ -31,13 +41,12 @@ public class GridTile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!hasRoad)
+        if (!HasRoad())
         {
-            RoadPiece roadPiece = RoadSpawner.Instance.PlaceCurrentPiece();
-            roadPiece.transform.position = transform.position;
-            roadPiece.transform.parent = transform;
+            RoadPiece = RoadSpawner.Instance.PlaceCurrentPiece();
+            RoadPiece.transform.position = transform.position;
+            RoadPiece.transform.parent = transform;
             highlight.SetActive(false);
-            hasRoad = true;
         }
     }
 }
