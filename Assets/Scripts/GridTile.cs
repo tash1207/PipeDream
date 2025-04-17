@@ -12,6 +12,8 @@ public class GridTile : MonoBehaviour
 
     public bool canPlaceRoad = true;
 
+    int replaceRoadCost = -20;
+
     public void SetHighlight(bool enabled)
     {
         highlight.SetActive(enabled);
@@ -68,6 +70,7 @@ public class GridTile : MonoBehaviour
 
     IEnumerator ReplaceRoad()
     {
+        ScoreKeeper.Instance.ModifyScore(replaceRoadCost);
         GridManager.Instance.canPlaceRoad = false;
         canPlaceRoad = false;
         ParticleSystem boomEffect =

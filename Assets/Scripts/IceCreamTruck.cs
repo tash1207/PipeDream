@@ -7,6 +7,7 @@ public class IceCreamTruck : MonoBehaviour
     float moveSpeed = 0.1f;
     bool isMoving;
     Vector3 moveTarget;
+    int iceCreamValue = 10;
 
     RoadPiece.Node enteringDirection;
     GridTile nextTile;
@@ -74,6 +75,7 @@ public class IceCreamTruck : MonoBehaviour
                 if (nextTile != null)
                 {
                     Instantiate(iceCreamCone, transform.position, iceCreamCone.transform.rotation);
+                    ScoreKeeper.Instance.ModifyScore(iceCreamValue);
                     MoveFrom(nextTile.RoadPiece);
                 }
             }
