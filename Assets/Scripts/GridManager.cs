@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -18,8 +19,11 @@ public class GridManager : MonoBehaviour
     [SerializeField] RoadPiece[] possibleHubPieces;
     [SerializeField] IceCreamTruck iceCreamTruckPrefab;
     [SerializeField] AudioSource backgroundMusic;
+
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject youWinCanvas;
+    [SerializeField] TMP_Text gameOverScoreText;
+    [SerializeField] TMP_Text youWinScoreText;
 
     Dictionary<Vector2Int, GridTile> tiles;
     GridTile[] upcomingPiecesTiles = new GridTile[5];
@@ -139,11 +143,13 @@ public class GridManager : MonoBehaviour
 
     public void ShowGameOver()
     {
+        gameOverScoreText.text = "SCORE : " + ScoreKeeper.Instance.GetScoreBeforeThisLevel();
         gameOverCanvas.SetActive(true);
     }
 
     public void ShowWinScreen()
     {
+        youWinScoreText.text = "SCORE : " + ScoreKeeper.Instance.GetScore();
         youWinCanvas.SetActive(true);
     }
 

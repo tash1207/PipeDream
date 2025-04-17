@@ -4,6 +4,7 @@ public class ScoreKeeper : MonoBehaviour
 {
     public static ScoreKeeper Instance;
     
+    int scoreBeforeThisLevel = 0;
     int currentScore = 0;
 
     void Awake()
@@ -19,6 +20,11 @@ public class ScoreKeeper : MonoBehaviour
         }
     }
 
+    public int GetScoreBeforeThisLevel()
+    {
+        return scoreBeforeThisLevel;
+    }
+
     public int GetScore()
     {
         return currentScore;
@@ -32,5 +38,16 @@ public class ScoreKeeper : MonoBehaviour
     public void ResetScore()
     {
         currentScore = 0;
+        scoreBeforeThisLevel = 0;
+    }
+
+    public void LockInCurrentScore()
+    {
+        scoreBeforeThisLevel = currentScore;
+    }
+
+    public void SetScoreToBeforeLevel()
+    {
+        currentScore = scoreBeforeThisLevel;
     }
 }

@@ -164,6 +164,8 @@ MonoBehaviour:
   backgroundMusic: {fileID: 345608329}
   gameOverCanvas: {fileID: 173964568}
   youWinCanvas: {fileID: 1500376918}
+  gameOverScoreText: {fileID: 173964569}
+  youWinScoreText: {fileID: 1500376919}
   canPlaceRoad: 1
 --- !u!4 &86460199
 Transform:
@@ -282,6 +284,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8371607699620416813, guid: 9e86168d26d77af429a629cfb75db9ea, type: 3}
   m_PrefabInstance: {fileID: 173964567}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &173964569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2592489964475885149, guid: 9e86168d26d77af429a629cfb75db9ea, type: 3}
+  m_PrefabInstance: {fileID: 173964567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &203168961
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +987,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5571552184854388038, guid: ba78932182f7938469f1a2957b04d56d, type: 3}
   m_PrefabInstance: {fileID: 1500376917}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1500376919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3676045641197938194, guid: ba78932182f7938469f1a2957b04d56d, type: 3}
+  m_PrefabInstance: {fileID: 1500376917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1930164007
 GameObject:
   m_ObjectHideFlags: 0

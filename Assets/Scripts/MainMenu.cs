@@ -13,6 +13,37 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.LoadGame();
     }
 
+    public void RetryLevel()
+    {
+        ScoreKeeper.Instance.SetScoreToBeforeLevel();
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                LoadLevel1();
+                break;
+            case 2:
+                LoadLevel2();
+                break;
+            case 3:
+                LoadLevel3();
+                break;
+        }
+    }
+
+    public void NextLevel()
+    {
+        ScoreKeeper.Instance.LockInCurrentScore();
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                LoadLevel2();
+                break;
+            case 2:
+                LoadLevel3();
+                break;
+        }
+    }
+
     public void LoadLevel1()
     {
         GameManager.Instance.LoadLevel1();
