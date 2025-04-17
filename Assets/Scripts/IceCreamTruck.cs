@@ -30,6 +30,22 @@ public class IceCreamTruck : MonoBehaviour
         moveTarget = GetExitMoveTargetFromRoadPiece(roadPiece);
     }
 
+    public Quaternion GetMovingDirectionRotation(RoadPiece roadPiece)
+    {
+        switch (roadPiece.GetExit())
+        {
+            case RoadPiece.Node.Up:
+                return Quaternion.identity;
+            case RoadPiece.Node.Down:
+                return Quaternion.Euler(0, 0, 180);
+            case RoadPiece.Node.Left:
+                return Quaternion.Euler(0, 0, 90);
+            case RoadPiece.Node.Right:
+                return Quaternion.Euler(0, 0, -90);
+        }
+        return Quaternion.identity;
+    }
+
     Vector3 GetExitMoveTargetFromRoadPiece(RoadPiece roadPiece)
     {
         Vector3 rpTransform = roadPiece.transform.position;
@@ -76,6 +92,8 @@ public class IceCreamTruck : MonoBehaviour
                 {
                     Instantiate(iceCreamCone, transform.position, iceCreamCone.transform.rotation);
                     ScoreKeeper.Instance.ModifyScore(iceCreamValue);
+
+                    transform.rotation = GetMovingDirectionRotation(nextTile.RoadPiece);
                     MoveFrom(nextTile.RoadPiece);
                 }
             }

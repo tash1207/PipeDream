@@ -114,7 +114,7 @@ public class GridManager : MonoBehaviour
         iceCreamTruck = Instantiate(
             iceCreamTruckPrefab,
             new Vector3(startPos.x, startPos.y, 0),
-            Quaternion.identity);
+            iceCreamTruckPrefab.GetMovingDirectionRotation(startPiece));
         iceCreamTruck.SetSpeed(iceCreamTruckMoveSpeed);
         StartCoroutine(MoveIceCreamTruck());
 
