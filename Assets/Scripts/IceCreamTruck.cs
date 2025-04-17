@@ -84,6 +84,12 @@ public class IceCreamTruck : MonoBehaviour
 
     public void OnEnteredNewTile(GridTile currentTile)
     {
+        if (currentTile.isBorder)
+        {
+            Debug.Log("Crashed into border");
+            GameOver();
+            return;
+        }
         currentTile.canPlaceRoad = false;
         if (currentTile.HasRoad())
         {
@@ -108,15 +114,20 @@ public class IceCreamTruck : MonoBehaviour
             else
             {
                 Debug.Log("Current tile cannot be entered");
-                isMoving = false;
-                GridManager.Instance.ShowGameOver();
+                GameOver();
             }
         }
         else
         {
             Debug.Log("Current tile has no road");
-            isMoving = false;
-            GridManager.Instance.ShowGameOver();
+            GameOver();
         }
+    }
+
+    void GameOver()
+    {
+        isMoving = false;
+        GridManager.Instance.canPlaceRoad = false;
+        GridManager.Instance.ShowGameOver();
     }
 }

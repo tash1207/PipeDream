@@ -11,6 +11,7 @@ public class GridTile : MonoBehaviour
     public RoadPiece RoadPiece { get; private set; }
 
     public bool canPlaceRoad = true;
+    public bool isBorder { get; private set; }
 
     int replaceRoadCost = -20;
 
@@ -24,6 +25,14 @@ public class GridTile : MonoBehaviour
         return RoadPiece != null;
     }
 
+    public void SetIsBorder()
+    {
+        isBorder = true;
+        canHighlight = false;
+        canPlaceRoad = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+
     public void SetRoadPiece(RoadPiece rp)
     {
         RoadPiece = rp;
@@ -31,7 +40,6 @@ public class GridTile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Ice cream truck has entered new tile");
         if (collision.gameObject.TryGetComponent<IceCreamTruck>(out IceCreamTruck truck))
         {
             truck.OnEnteredNewTile(this);

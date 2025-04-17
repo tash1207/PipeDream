@@ -48,12 +48,10 @@ public class GridManager : MonoBehaviour
     {
         for (int y = 0; y < upcomingPiecesLength; y++)
         {
-            GridTile spawnedTile = Instantiate(
-                gridTile,
-                new Vector3Int(upcomingPiecesX, y + 1, 0),
-                Quaternion.identity,
-                upcomingPieceContainer);
+            GridTile spawnedTile =
+                GenerateTileAtPoint(upcomingPiecesX, y + 1, upcomingPieceContainer);
             spawnedTile.canHighlight = false;
+            spawnedTile.canPlaceRoad = false;
             spawnedTile.SetHighlight(y != 0);
             upcomingPiecesTiles[y] = spawnedTile;
         }
@@ -64,19 +62,28 @@ public class GridManager : MonoBehaviour
     void GenerateGrid()
     {
         tiles = new Dictionary<Vector2Int, GridTile>();
-        for (int x = 0; x < width; x++)
+        for (int x = -1; x < width + 1; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = -1; y < height + 1; y++)
             {
-                GridTile spawnedTile = Instantiate(
-                    gridTile,
-                    new Vector3Int(x, y, 0),
-                    Quaternion.identity,
-                    gridTileContainer);
+                GridTile spawnedTile = GenerateTileAtPoint(x, y, gridTileContainer);
                 tiles[new Vector2Int(x, y)] = spawnedTile;
+                if (x == -1 || y == -1 || x == width || y == height)
+                {
+                    spawnedTile.SetIsBorder();
+                }
             }
         }
         GenerateStartAndEnd();
+    }
+
+    GridTile GenerateTileAtPoint(int x, int y, Transform parent)
+    {
+        return Instantiate(
+            gridTile,
+            new Vector3Int(x, y, 0),
+            Quaternion.identity,
+            parent);
     }
 
     void GenerateStartAndEnd()
