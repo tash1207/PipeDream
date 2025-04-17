@@ -149,7 +149,9 @@ public class GridManager : MonoBehaviour
 
     public void ShowWinScreen()
     {
-        youWinScoreText.text = "SCORE : " + ScoreKeeper.Instance.GetScore();
+        int currentScore = ScoreKeeper.Instance.GetScore();
+        MaybeSetHighScore(currentScore);
+        youWinScoreText.text = "SCORE : " + currentScore;
         youWinCanvas.SetActive(true);
     }
 
@@ -161,5 +163,15 @@ public class GridManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    void MaybeSetHighScore(int score)
+    {
+        int currentHighScore = PlayerPrefs.GetInt("highscore", -1);
+
+        if (score > currentHighScore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+        }
     }
 }

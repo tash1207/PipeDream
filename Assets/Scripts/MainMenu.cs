@@ -1,8 +1,24 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] TMP_Text highScoreText;
+
+    void Start()
+    {
+        if (highScoreText != null)
+        {
+            int highScore = PlayerPrefs.GetInt("highscore", -1);
+            if (highScore != -1)
+            {
+                highScoreText.text = "High Score : " + highScore;
+                highScoreText.gameObject.SetActive(true);
+            }
+        }    
+    }
+
     public void LoadMainMenu()
     {
         GameManager.Instance.LoadMainMenu();
