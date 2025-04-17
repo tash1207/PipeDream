@@ -11,6 +11,7 @@ public class IceCreamTruck : MonoBehaviour
 
     RoadPiece.Node enteringDirection;
     GridTile nextTile;
+    bool hasStarted;
 
     bool showWinScreen;
 
@@ -111,9 +112,10 @@ public class IceCreamTruck : MonoBehaviour
         currentTile.canPlaceRoad = false;
         if (currentTile.HasRoad())
         {
-            if (currentTile.RoadPiece.isStart)
+            if (currentTile.RoadPiece.isStart && !hasStarted)
             {
                 nextTile = currentTile;
+                hasStarted = true;
             }
             else if (currentTile.RoadPiece.EnterRoad(enteringDirection))
             {
