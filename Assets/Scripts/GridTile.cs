@@ -12,6 +12,7 @@ public class GridTile : MonoBehaviour
 
     public bool canPlaceRoad = true;
     public bool isBorder { get; private set; }
+    public bool isPlacingNewRoad;
 
     int replaceRoadCost = -20;
 
@@ -78,6 +79,7 @@ public class GridTile : MonoBehaviour
 
     IEnumerator ReplaceRoad()
     {
+        isPlacingNewRoad = true;
         ScoreKeeper.Instance.ModifyScore(replaceRoadCost);
         GridManager.Instance.canPlaceRoad = false;
         canPlaceRoad = false;
@@ -93,6 +95,7 @@ public class GridTile : MonoBehaviour
         RoadPiece.gameObject.SetActive(true);
         canPlaceRoad = true;
         GridManager.Instance.canPlaceRoad = true;
+        isPlacingNewRoad = false;
     }
 
     void PlaceRoad()

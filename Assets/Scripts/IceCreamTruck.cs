@@ -110,6 +110,12 @@ public class IceCreamTruck : MonoBehaviour
             return;
         }
         currentTile.canPlaceRoad = false;
+        if (currentTile.isPlacingNewRoad)
+        {
+            Debug.Log("Crashed into construction zone");
+            GameOver();
+            return;
+        }
         if (currentTile.HasRoad())
         {
             if (currentTile.RoadPiece.isStart && !hasStarted)
